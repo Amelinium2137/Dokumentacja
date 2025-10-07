@@ -56,46 +56,82 @@
 
 ### 3 Harmonogram
 
-1. **16–21 września – Analiza i przygotowanie**
-    
-    - zebranie materiałów o architekturze CHIP-8,
-        
-    - zapoznanie się ze specyfikacją instrukcji,
-        
-    - wybór języka i narzędzi.
-        
-2. **22–28 września – Projektowanie systemu**
-    
-    - opracowanie modułów emulatora,
-        
-    - zaplanowanie interfejsu graficznego i obsługi wejścia.
-        
-3. **29 września – 5 października – Implementacja podstaw**
-    
-    - stworzenie struktury pamięci i rejestrów,
-        
-    - implementacja pętli głównej i dekodera instrukcji.
-        
-4. **6–12 października – Obsługa grafiki i wejścia**
-    
-    - implementacja wyświetlania ekranu 64×32,
-        
-    - mapowanie klawiatury.
-        
-5. **13–19 października – Testowanie i poprawki**
-    
-    - uruchamianie przykładowych ROM-ów,
-        
-    - naprawa błędów i optymalizacja.
-        
-6. **20–28 października – Dokumentacja i prezentacja**
-    
-    - przygotowanie raportu technicznego,
-        
-    - stworzenie instrukcji użytkownika,
-        
-    - finalne testy i prezentacja działania.
+### **Sprint 1: 16–21 września – Analiza i przygotowanie**
 
+**Adrian Jaworski**
+
+* Zebranie materiałów o architekturze CHIP-8
+* Wybór języka programowania i narzędzi
+
+**Adrian Filipek**
+
+* Zapoznanie się ze specyfikacją instrukcji
+* Konfiguracja środowiska developerskiego i repozytorium
+
+
+### **Sprint 2: 22–28 września – Projektowanie systemu**
+
+**Adrian Jaworski**
+
+* Projekt modułów emulatora (CPU, pamięć)
+* Dokumentacja struktury danych
+
+**Adrian Filipek**
+
+* Projekt interfejsu graficznego
+* Zaplanowanie obsługi wejścia z klawiatury
+
+
+### **Sprint 3: 29 września – 5 października – Implementacja podstaw**
+
+**Adrian Jaworski**
+
+* Implementacja struktury pamięci
+* Implementacja rejestrów i timera
+
+**Adrian Filipek**
+
+* Implementacja pętli głównej
+* Implementacja dekodera instrukcji
+
+
+### **Sprint 4: 6–12 października – Obsługa grafiki i wejścia**
+
+**Adrian Jaworski**
+
+* Implementacja wyświetlania ekranu (64×32)
+* Rysowanie pikseli i czyszczenie ekranu
+
+**Adrian Filipek**
+
+* Mapowanie klawiatury do układu CHIP-8
+* Obsługa zdarzeń wejścia z klawiatury
+
+
+### **Sprint 5: 13–19 października – Testowanie i poprawki**
+
+**Adrian Jaworski**
+
+* Uruchamianie przykładowych ROM-ów
+* Weryfikacja działania instrukcji
+
+**Adrian Filipek**
+
+* Debugowanie i poprawa błędów
+* Optymalizacja wydajności emulatora
+
+
+### **Sprint 6: 20–28 października – Dokumentacja i prezentacja**
+
+**Adrian Jaworski**
+
+* Przygotowanie raportu technicznego
+* Dokumentacja kodu
+
+**Adrian Filipek**
+
+* Stworzenie instrukcji użytkownika
+* Przygotowanie prezentacji emulatora
 
 ### 4 Backlog produktu / Zadania w projekcie
 #### Podstawowe (MVP):
