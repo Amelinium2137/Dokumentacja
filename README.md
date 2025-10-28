@@ -12,7 +12,6 @@ Aby zbudować projekt, potrzebujesz:
 - **CMake** (≥ 3.10)  
 - **kompilator C++** (np. g++, clang)  
 - **biblioteka ncurses / ncursesw**  
-- *(opcjonalnie)* **SDL2** — jeśli planujesz wersję graficzną
 
 ### Instalacja na macOS (Homebrew):
 ```bash
