@@ -1,0 +1,17 @@
+# Build directories
+build/
+result
+result-*
+
+# Nix
+.direnv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

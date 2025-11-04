@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.20)
+project(chip8)
+
+set(CMAKE_CXX>STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+include_directories(/opt/homebrew/opt/ncurses/include)
+link_directories(/opt/homebrew/opt/ncurses/lib)
+
+add_executable(chip8
+    src/main.cpp
+    src/chip8.cpp
+    src/display.cpp
+    src/utils.cpp
+)
+target_link_libraries(chip8 ncurses ncursesw)
+
+# Add install target
+install(TARGETS chip8 
+    RUNTIME DESTINATION bin
+)
+
+# Optionally install README
+install(FILES README.md 
+    DESTINATION share/doc/chip8-emulator
+)
