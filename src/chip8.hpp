@@ -125,4 +125,46 @@ public:
     void updateTimers(); 
     void updateKeypad(int ch);
     void resetKeypad();
+    
+    // Metody publiczne dla testów
+    #ifdef TESTING
+    uint8_t getRegister(uint8_t reg) const { return registers[reg]; }
+    void setRegister(uint8_t reg, uint8_t value) { registers[reg] = value; }
+    
+    uint16_t getIndex() const { return index; }
+    void setIndex(uint16_t value) { index = value; }
+    
+    uint16_t getPC() const { return pc; }
+    void setPC(uint16_t value) { pc = value; }
+    
+    uint8_t getSP() const { return sp; }
+    void setSP(uint8_t value) { sp = value; }
+    
+    uint16_t getStack(uint8_t index) const { return stack[index]; }
+    void setStack(uint8_t index, uint16_t value) { stack[index] = value; }
+    
+    uint8_t getMemory(uint16_t address) const { return memory[address]; }
+    void setMemory(uint16_t address, uint8_t value) { memory[address] = value; }
+    
+    uint8_t getKeypad(uint8_t key) const { return keypad[key]; }
+    void setKeypad(uint8_t key, uint8_t value) { keypad[key] = value; }
+    
+    uint8_t getDelayTimer() const { return delayTimer; }
+    void setDelayTimer(uint8_t value) { delayTimer = value; }
+    
+    uint8_t getSoundTimer() const { return soundTimer; }
+    void setSoundTimer(uint8_t value) { soundTimer = value; }
+    
+    uint16_t getOpcode() const { return opcode; }
+    void setOpcode(uint16_t value) { opcode = value; }
+    
+    // Metody do testowania konkretnych instrukcji
+    void executeOpcode(uint16_t opcodeValue) {
+        memory[pc] = static_cast<uint8_t>((opcodeValue & 0xFF00) >> 8);
+        memory[pc + 1] = static_cast<uint8_t>(opcodeValue & 0x00FF);
+        cycle();
+    }
+    
+    Instruction testDecodeOpcode() const { return decodeOpcode(); }
+    #endif
 };

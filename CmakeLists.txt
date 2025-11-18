@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.20)
 project(chip8)
 
-set(CMAKE_CXX>STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(/opt/homebrew/opt/ncurses/include)
 link_directories(/opt/homebrew/opt/ncurses/lib)
 
+# Główny executable
 add_executable(chip8
     src/main.cpp
     src/chip8.cpp
@@ -14,6 +15,38 @@ add_executable(chip8
     src/utils.cpp
 )
 target_link_libraries(chip8 ncurses ncursesw)
+
+# Włącz testy
+enable_testing()
+
+# Znajdź Google Test
+find_package(GTest REQUIRED)
+
+# Utwórz bibliotekę z logiką CHIP-8 (bez main.cpp)
+add_library(chip8_lib
+    src/chip8.cpp
+    src/display.cpp
+    src/utils.cpp
+)
+target_link_libraries(chip8_lib ncurses ncursesw)
+target_compile_definitions(chip8_lib PUBLIC TESTING)
+
+# Dodaj testy
+add_executable(chip8_tests
+    tests/test_chip8_instructions.cpp
+    tests/test_chip8_memory.cpp
+    tests/test_chip8_timers.cpp
+)
+
+target_link_libraries(chip8_tests 
+    chip8_lib
+    GTest::gtest
+    GTest::gtest_main
+)
+target_compile_definitions(chip8_tests PRIVATE TESTING)
+
+# Zarejestruj testy
+add_test(NAME chip8_unit_tests COMMAND chip8_tests)
 
 # Add install target
 install(TARGETS chip8 
