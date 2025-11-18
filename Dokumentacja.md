@@ -492,4 +492,28 @@ Rozumiem, kontynuuję dokumentację testów jednostkowych emulatora CHIP-8 w wym
     }
     ```
 
+### 7.9. Test 9 (Key Input & Rendering)
+
+* **Rodzaj Testu:** **Czarnoskrzynkowe**, Funkcjonalny, Interaktywny
+* **Wykonawca:** **Adrian Jaworski** i **Adrian Filipek**
+* **Opis testu:** Weryfikacja poprawności instrukcji rysowania (opcode **0xDXYN** – Display) oraz instrukcji oczekującej na wciśnięcie klawisza (opcode **0xFX0A** – Get Key) na poziomie interfejsu użytkownika (terminal/okno emulatora). 
+    1. Wczytanie i uruchomienie kodu **testowego $\text{CHIP-8}$**, który rysuje pojedynczy, mały obiekt (np. cyfrę $\text{5}$) na ekranie.
+    2. Sprawdzenie, czy obiekt (sprite) jest **poprawnie wyświetlany (renderowany)** w oknie terminala lub emulatora.
+    3. Uruchomienie instrukcji **0xFX0A**, która pauzuje wykonanie programu do momentu wciśnięcia klawisza.
+    4. Wciśnięcie określonego klawisza z klawiatury $\text{CHIP-8}$ (np. klawisza $\text{'5'}$).
+    5. Sprawdzenie, czy program **wznowił wykonanie**, a wartość wciśniętego klawisza została poprawnie wewnętrznie zapisana (weryfikacja stanu $\text{V0}$).
+* **Wymagany wsad (Program CHIP-8):** Kod, który:
+    1. Ładuje lokalizację sprite'u dla cyfry $\text{'5'}$ do rejestru $\text{I}$ (**0xF529**).
+    2. Rysuje sprite $\text{5}$ w widocznym miejscu na ekranie (**0xDXY5**).
+    3. Czeka na klawisz w rejestrze $\text{V0}$ (**0xF00A**).
+* **Oczekiwany Rezultat (Kroki):**
+    1. W oknie emulatora/terminala **pojawia się graficzny symbol** (cyfra $\text{'5'}$).
+    2. Emulator zatrzymuje się, oczekując na wejście (stan $\text{WAIT}$).
+    3. Po wciśnięciu klawisza $\text{'5'}$, program **wznawia działanie**.
+    4. Wewnętrzny stan emulatora ($\text{V0}$) przechowuje wartość klawisza $\text{'5'}$ ($\text{0x5}$).
+* **Poprawki do wprowadzenia:** W przypadku niepowodzenia – naprawa modułu odpowiedzialnego za:
+    * Mapowanie sprite'ów i funkcję rysowania ($\text{0xDXYN}$).
+    * Blokujące oczekiwanie na wejście i mapowanie fizycznego klawisza do wartości rejestru $\text{VX}$ ($\text{0xFX0A}$).
+* **Użyte programy/technologie:** Emulator $\text{CHIP-8}$, Środowisko uruchomieniowe (Terminal/Okienko graficzne), Zdefiniowany kod $\text{CHIP-8}$ do testu.
+
 
