@@ -516,4 +516,137 @@ Rozumiem, kontynuuję dokumentację testów jednostkowych emulatora CHIP-8 w wym
     * Blokujące oczekiwanie na wejście i mapowanie fizycznego klawisza do wartości rejestru $\text{VX}$ ($\text{0xFX0A}$).
 * **Użyte programy/technologie:** Emulator $\text{CHIP-8}$, Środowisko uruchomieniowe (Terminal/Okienko graficzne), Zdefiniowany kod $\text{CHIP-8}$ do testu.
 
+## Instrukacja użytkownika
+---
+
+## Opis
+
+CHIP-8 to interpretowany język programowania opracowany przez Josepha Weisbeckera w połowie lat 70. Początkowo był wykorzystywany na 8-bitowych mikrokomputerach COSMAC VIP i Telmac 1800, aby ułatwić tworzenie gier. Ten emulator wiernie odtwarza system CHIP-8, pozwalając uruchamiać klasyczne gry i programy w terminalu.
+
+## Funkcje
+
+* Pełna implementacja zestawu instrukcji CHIP-8
+* Grafika terminalowa oparta na ncurses z wykorzystaniem znaków Unicode
+* Obsługa wejścia z klawiatury w czasie rzeczywistym
+* Obsługa dźwięku (podstawowy sygnał „beep”)
+* Odświeżanie wyświetlacza 60 Hz oraz timery aktualizowane 30 Hz
+* Wyjście debugowe dla nieznanych instrukcji
+* Kompatybilność wieloplatformowa (macOS, Linux)
+
+## Wymagania
+
+* Kompilator zgodny z C++17 (GCC, Clang itd.)
+* CMake 3.10 lub nowszy
+* Biblioteka ncurses
+* Terminal obsługujący znaki Unicode
+
+**LUB**
+
+* Menedżer pakietów Nix (zalecany dla powtarzalnych buildów)
+
+### Instalacja zależności
+
+**macOS:**
+
+```bash
+brew install cmake ncurses
+```
+
+**Ubuntu/Debian:**
+
+```bash
+sudo apt-get install cmake libncurses5-dev libncursesw5-dev
+```
+
+**Arch Linux:**
+
+```bash
+sudo pacman -S cmake ncurses
+```
+
+## Budowanie
+
+### Używając Nix (zalecane)
+
+**Z Nix flakes:**
+
+```bash
+# Klonowanie repozytorium
+git clone https://github.com/AdekSycamore/chip-8.git
+cd chip-8
+
+# Budowanie projektu
+nix build
+
+# Uruchomienie bez lokalnego buildowania
+nix run . -- path/to/rom.ch8
+
+# Wejście do środowiska developerskiego
+nix develop
+```
+
+**Z użyciem legacy Nix:**
+
+```bash
+# Wejście do środowiska developerskiego
+nix-shell
+
+# Następnie zwykłe budowanie
+mkdir build && cd build
+cmake .. && make
+```
+
+### Używając tradycyjnych narzędzi
+
+```bash
+# Klonowanie repozytorium
+git clone https://github.com/AdekSycamore/chip-8.git
+cd chip-8
+
+# Utworzenie katalogu build
+mkdir build
+cd build
+
+# Konfiguracja i budowanie
+cmake ..
+make
+```
+
+## Użycie
+
+### Z Nix
+
+```bash
+# Uruchomienie bezpośrednio ze sklepu Nix
+nix run . -- path/to/rom.ch8
+
+# Lub po zbudowaniu
+./result/bin/chip8-emulator path/to/rom.ch8
+```
+
+### Tradycyjny build
+
+```bash
+# Uruchom emulator z plikiem ROM
+./chip8 path/to/rom.ch8
+```
+
+### Układ klawiatury
+
+Klawiatura CHIP-8 jest odwzorowana na twoją klawiaturę w następujący sposób:
+
+```
+CHIP-8 Keypad    Klawiatura
+1 2 3 C          1 2 3 4
+4 5 6 D    →     Q W E R
+7 8 9 E          A S D F
+A 0 B F          Z X C V
+```
+
+### Sterowanie
+
+* **Q**: zakończenie działania emulatora
+* **1–4, Q–R, A–F, Z–V**: wejście klawiatury CHIP-8
+
+---
 
